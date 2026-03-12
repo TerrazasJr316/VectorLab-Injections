@@ -1,0 +1,24 @@
+{
+  "name": "vectorlab-injections",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Laboratorio de pruebas de ataques por inyección - SQL, NoSQL, LDAP, XPath, GraphQL",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint src --ext .jsx,.js"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "lucide-react": "^0.344.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "@vitejs/plugin-react": "^4.2.0",
+    "vite": "^5.0.0"
+  }
+}
