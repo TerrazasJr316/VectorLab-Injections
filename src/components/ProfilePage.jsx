@@ -1,5 +1,5 @@
 import React from 'react'
-import { LogOut, User, Shield, Clock, CheckCircle } from 'lucide-react'
+import { LogOut, User, Shield, Clock, CheckCircle, Key, Target, Info, ShieldAlert } from 'lucide-react'
 import './ProfilePage.css'
 
 function ProfilePage({ user, injectionType, onLogout }) {
@@ -20,7 +20,7 @@ function ProfilePage({ user, injectionType, onLogout }) {
 
       <div className="profile-grid">
         <div className="profile-card primary">
-          <div className="card-icon">👤</div>
+          <User size={32} className="card-icon" />
           <div className="card-content">
             <h3>Usuario</h3>
             <p className="card-value">{user.username}</p>
@@ -28,7 +28,7 @@ function ProfilePage({ user, injectionType, onLogout }) {
         </div>
 
         <div className="profile-card primary">
-          <div className="card-icon">🔑</div>
+          <Key size={32} className="card-icon" />
           <div className="card-content">
             <h3>Contraseña</h3>
             <p className="card-value">{'•'.repeat(user.password.length)}</p>
@@ -36,7 +36,7 @@ function ProfilePage({ user, injectionType, onLogout }) {
         </div>
 
         <div className="profile-card success">
-          <div className="card-icon">✅</div>
+          <CheckCircle size={32} className="card-icon" />
           <div className="card-content">
             <h3>Estado de Autenticación</h3>
             <p className="card-value">Verificado</p>
@@ -44,7 +44,7 @@ function ProfilePage({ user, injectionType, onLogout }) {
         </div>
 
         <div className="profile-card info">
-          <div className="card-icon">🎯</div>
+          <Target size={32} className="card-icon" />
           <div className="card-content">
             <h3>Tipo de Inyección</h3>
             <p className="card-value">{injectionType || 'Credenciales Válidas'}</p>
@@ -76,7 +76,7 @@ function ProfilePage({ user, injectionType, onLogout }) {
 
       {injectionType && (
         <div className="injection-info">
-          <h3>ℹ️ Información de la Inyección</h3>
+          <h3><Info size={20} style={{display: 'inline', marginRight: '8px'}} />Información de la Inyección</h3>
           <div className="injection-details">
             <p>
               <strong>Tipo Detectado:</strong> {injectionType} Injection
@@ -96,7 +96,7 @@ function ProfilePage({ user, injectionType, onLogout }) {
       )}
 
       <div className="security-tips">
-        <h3>🛡️ Consejos de Seguridad</h3>
+        <h3><ShieldAlert size={20} style={{display: 'inline', marginRight: '8px'}} />Consejos de Seguridad</h3>
         <ul>
           <li>Nunca compartas tus credenciales con terceros</li>
           <li>Usa contraseñas fuertes y únicas para cada servicio</li>

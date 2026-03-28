@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Navigation from './components/Navigation'
 import ProfilePage from './components/ProfilePage'
-import { Github } from 'lucide-react'
+import { Github, Shield, TestTube2, BookOpen } from 'lucide-react'
 import SQLInjection from './components/attacks/SQLInjection'
 import NoSQLInjection from './components/attacks/NoSQLInjection'
 import LDAPInjection from './components/attacks/LDAPInjection'
@@ -73,17 +73,17 @@ function Home() {
 
       <div className="features">
         <div className="feature-card">
-          <div className="icon">🔐</div>
+          <Shield size={32} className="icon" />
           <h3>Educación en Seguridad</h3>
           <p>Aprende sobre vulnerabilidades comunes de inyección</p>
         </div>
         <div className="feature-card">
-          <div className="icon">🧪</div>
+          <TestTube2 size={32} className="icon" />
           <h3>Pruebas Interactivas</h3>
           <p>Experimenta en un entorno seguro y controlado</p>
         </div>
         <div className="feature-card">
-          <div className="icon">📚</div>
+          <BookOpen size={32} className="icon" />
           <h3>Recursos Completos</h3>
           <p>Documentación y ejemplos para cada tipo de ataque</p>
         </div>

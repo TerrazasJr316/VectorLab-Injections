@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Lock, AlertCircle, CheckCircle } from 'lucide-react'
+import { Lock, AlertCircle, CheckCircle, AlertTriangle, X } from 'lucide-react'
 import './SimpleLogin.css'
 
 function SimpleLogin({ attackType, onLoginSuccess }) {
@@ -40,7 +40,8 @@ function SimpleLogin({ attackType, onLoginSuccess }) {
     if (!username || !password) {
       setResult({
         success: false,
-        message: '⚠️ Completa ambos campos'
+        message: 'Completa ambos campos',
+        icon: 'warning'
       })
       return
     }
@@ -49,7 +50,8 @@ function SimpleLogin({ attackType, onLoginSuccess }) {
     if (username === CORRECT_USERNAME && password === CORRECT_PASSWORD) {
       setResult({
         success: true,
-        message: '✅ Credenciales válidas - Acceso concedido'
+        message: 'Credenciales válidas - Acceso concedido',
+        icon: 'success'
       })
       setTimeout(() => {
         onLoginSuccess({
@@ -71,7 +73,8 @@ function SimpleLogin({ attackType, onLoginSuccess }) {
       if (isInjection) {
         setResult({
           success: true,
-          message: `🚨 ${attackType} Injection detectada y EJECUTADA - Acceso concedido`
+          message: `${attackType} Injection detectada y EJECUTADA - Acceso concedido`,
+          icon: 'alert'
         })
         setTimeout(() => {
           onLoginSuccess({
@@ -87,7 +90,8 @@ function SimpleLogin({ attackType, onLoginSuccess }) {
     // Credenciales inválidas
     setResult({
       success: false,
-      message: `❌ Acceso denegado - Intenta con admin / password123 o una inyección ${attackType || ''}`
+      message: `Acceso denegado - Intenta con admin / password123 o una inyección ${attackType || ''}`,
+      icon: 'error'
     })
   }
 
