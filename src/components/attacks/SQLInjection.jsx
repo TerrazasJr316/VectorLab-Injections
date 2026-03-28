@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import AttackModule from '../AttackModule'
 import SimpleLogin from '../SimpleLogin'
+import { Search, AlertTriangle, CheckCircle, TestTube2, BookOpen, Monitor, X } from 'lucide-react'
 import '../attacks.css'
 
 function SQLInjection({ onLoginSuccess }) {
@@ -18,8 +19,8 @@ function SQLInjection({ onLoginSuccess }) {
     setResult({
       vulnerable: isVulnerable,
       message: isVulnerable 
-        ? '⚠️ Patrón de inyección SQL detectado!'
-        : '✅ Entrada segura'
+        ? 'Patrón de inyección SQL detectado!'
+        : 'Entrada segura'
     })
     setShowVulnerable(isVulnerable)
   }
@@ -56,7 +57,7 @@ function SQLInjection({ onLoginSuccess }) {
   return (
     <AttackModule
       title="SQL Injection"
-      icon="🔍"
+      icon={<Search size={24} />}
       description="SQL Injection es una técnica de ataque que permite a los atacantes insertar código SQL malicioso en consultas de base de datos."
     >
       <SimpleLogin attackType="SQL" onLoginSuccess={onLoginSuccess} />
@@ -79,17 +80,17 @@ function SQLInjection({ onLoginSuccess }) {
 
           <h4>Prevención:</h4>
           <ul className="prevention-list">
-            <li>✓ Usar consultas preparadas (Prepared Statements)</li>
-            <li>✓ Validar entrada de datos en servidor</li>
-            <li>✓ Usar parameterización</li>
-            <li>✓ Aplicar principio de menor privilegio en BD</li>
-            <li>✓ Usar WAF (Web Application Firewall)</li>
+            <li>Usar consultas preparadas (Prepared Statements)</li>
+            <li>Validar entrada de datos en servidor</li>
+            <li>Usar parametrización</li>
+            <li>Aplicar principio de menor privilegio en BD</li>
+            <li>Usar WAF (Web Application Firewall)</li>
           </ul>
         </div>
 
         <div className="testing-section">
           <div className="test-lab">
-            <h3>🧪 Laboratorio de Pruebas</h3>
+            <h3><TestTube2 size={20} style={{display: 'inline', marginRight: '8px'}} />Laboratorio de Pruebas</h3>
             <div className="input-group">
               <label>Ingresa un payload:</label>
               <input
@@ -133,7 +134,7 @@ function SQLInjection({ onLoginSuccess }) {
       </div>
 
       <div className="examples-section">
-        <h3>📚 Ejemplos Educativos</h3>
+        <h3><BookOpen size={20} style={{display: 'inline', marginRight: '8px'}} />Ejemplos Educativos</h3>
         <div className="examples-grid">
           {examples.map((example, idx) => (
             <div key={idx} className="example-card">
@@ -146,10 +147,10 @@ function SQLInjection({ onLoginSuccess }) {
       </div>
 
       <div className="code-examples">
-        <h3>💻 Código Vulnerable vs Seguro</h3>
+        <h3><Monitor size={20} style={{display: 'inline', marginRight: '8px'}} />Código Vulnerable vs Seguro</h3>
         <div className="code-comparison">
           <div className="code-block vulnerable">
-            <h5>❌ VULNERABLE</h5>
+            <h5><X size={16} style={{display: 'inline', marginRight: '4px'}} />VULNERABLE</h5>
             <pre>{`// Python - VULNERABLE
 query = "SELECT * FROM users WHERE username='" + username + "'"
 cursor.execute(query)
@@ -160,7 +161,7 @@ const query = \`SELECT * FROM users
 db.query(query);`}</pre>
           </div>
           <div className="code-block secure">
-            <h5>✅ SEGURO</h5>
+            <h5><CheckCircle size={16} style={{display: 'inline', marginRight: '4px'}} />SEGURO</h5>
             <pre>{`// Python - SEGURO
 query = "SELECT * FROM users WHERE username = %s"
 cursor.execute(query, (username,))

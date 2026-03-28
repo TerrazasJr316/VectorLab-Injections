@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import AttackModule from '../AttackModule'
 import SimpleLogin from '../SimpleLogin'
+import { Lock, AlertTriangle, CheckCircle, TestTube2, BookOpen, Monitor, X } from 'lucide-react'
 import '../attacks.css'
 
 function LDAPInjection({ onLoginSuccess }) {
@@ -16,8 +17,8 @@ function LDAPInjection({ onLoginSuccess }) {
     setResult({
       vulnerable: isVulnerable,
       message: isVulnerable 
-        ? '⚠️ Patrón de inyección LDAP detectado!'
-        : '✅ Entrada segura'
+        ? 'Patrón de inyección LDAP detectado!'
+        : 'Entrada segura'
     })
   }
 
@@ -53,7 +54,7 @@ function LDAPInjection({ onLoginSuccess }) {
   return (
     <AttackModule
       title="LDAP Injection"
-      icon="🔐"
+      icon={<Lock size={24} />}
       description="LDAP Injection permite a atacantes manipular consultas LDAP inyectando filtros maliciosos en aplicaciones que usan servicios LDAP."
     >
       <SimpleLogin attackType="LDAP" onLoginSuccess={onLoginSuccess} />
@@ -86,7 +87,7 @@ function LDAPInjection({ onLoginSuccess }) {
 
         <div className="testing-section">
           <div className="test-lab">
-            <h3>🧪 Laboratorio de Pruebas</h3>
+            <h3><TestTube2 size={20} style={{display: 'inline', marginRight: '8px'}} />Laboratorio de Pruebas</h3>
             <div className="input-group">
               <label>Ingresa un payload LDAP:</label>
               <input
@@ -130,7 +131,7 @@ function LDAPInjection({ onLoginSuccess }) {
       </div>
 
       <div className="examples-section">
-        <h3>📚 Ejemplos Educativos</h3>
+        <h3><BookOpen size={20} style={{display: 'inline', marginRight: '8px'}} />Ejemplos Educativos</h3>
         <div className="examples-grid">
           {examples.map((example, idx) => (
             <div key={idx} className="example-card">
@@ -143,10 +144,10 @@ function LDAPInjection({ onLoginSuccess }) {
       </div>
 
       <div className="code-examples">
-        <h3>💻 Código Vulnerable vs Seguro</h3>
+        <h3><Monitor size={20} style={{display: 'inline', marginRight: '8px'}} />Código Vulnerable vs Seguro</h3>
         <div className="code-comparison">
           <div className="code-block vulnerable">
-            <h5>❌ VULNERABLE</h5>
+            <h5><X size={16} style={{display: 'inline', marginRight: '4px'}} />VULNERABLE</h5>
             <pre>{`// Java - VULNERABLE
 String filter = "(&(uid=" + username + 
   ")(password=" + password + "))";
@@ -157,7 +158,7 @@ NamingEnumeration results =
 // Filtro: (&(uid=admin*)(password=X))`}</pre>
           </div>
           <div className="code-block secure">
-            <h5>✅ SEGURO</h5>
+            <h5><CheckCircle size={16} style={{display: 'inline', marginRight: '4px'}} />SEGURO</h5>
             <pre>{`// Java - SEGURO
 String user = LdapName.escapeRDNValue(
   username).toString();

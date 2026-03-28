@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import AttackModule from '../AttackModule'
 import SimpleLogin from '../SimpleLogin'
+import { FileText, AlertTriangle, CheckCircle, TestTube2, BookOpen, Monitor, X } from 'lucide-react'
 import '../attacks.css'
 
 function XPathInjection({ onLoginSuccess }) {
@@ -16,8 +17,8 @@ function XPathInjection({ onLoginSuccess }) {
     setResult({
       vulnerable: isVulnerable,
       message: isVulnerable 
-        ? '⚠️ Patrón de inyección XPath detectado!'
-        : '✅ Entrada segura'
+        ? 'Patrón de inyección XPath detectado!'
+        : 'Entrada segura'
     })
   }
 
@@ -53,7 +54,7 @@ function XPathInjection({ onLoginSuccess }) {
   return (
     <AttackModule
       title="XPath Injection"
-      icon="📄"
+      icon={<FileText size={24} />}
       description="XPath Injection permite a atacantes manipular consultas XPath inyectando expresiones maliciosas en búsquedas en archivos XML."
     >
       <SimpleLogin attackType="XPath" onLoginSuccess={onLoginSuccess} />
@@ -86,7 +87,7 @@ function XPathInjection({ onLoginSuccess }) {
 
         <div className="testing-section">
           <div className="test-lab">
-            <h3>🧪 Laboratorio de Pruebas</h3>
+            <h3><TestTube2 size={20} style={{display: 'inline', marginRight: '8px'}} />Laboratorio de Pruebas</h3>
             <div className="input-group">
               <label>Ingresa un payload XPath:</label>
               <textarea
@@ -130,7 +131,7 @@ function XPathInjection({ onLoginSuccess }) {
       </div>
 
       <div className="examples-section">
-        <h3>📚 Ejemplos Educativos</h3>
+        <h3><BookOpen size={20} style={{display: 'inline', marginRight: '8px'}} />Ejemplos Educativos</h3>
         <div className="examples-grid">
           {examples.map((example, idx) => (
             <div key={idx} className="example-card">
@@ -143,10 +144,10 @@ function XPathInjection({ onLoginSuccess }) {
       </div>
 
       <div className="code-examples">
-        <h3>💻 Código Vulnerable vs Seguro</h3>
+        <h3><Monitor size={20} style={{display: 'inline', marginRight: '8px'}} />Código Vulnerable vs Seguro</h3>
         <div className="code-comparison">
           <div className="code-block vulnerable">
-            <h5>❌ VULNERABLE</h5>
+            <h5><X size={16} style={{display: 'inline', marginRight: '4px'}} />VULNERABLE</h5>
             <pre>{`// PHP - VULNERABLE
 $username = $_GET['user'];
 $xpath = "//user[name='" . 
@@ -157,7 +158,7 @@ $result = $dom->xpath($xpath);
 // '1'='1']/password/text()`}</pre>
           </div>
           <div className="code-block secure">
-            <h5>✅ SEGURO</h5>
+            <h5><CheckCircle size={16} style={{display: 'inline', marginRight: '4px'}} />SEGURO</h5>
             <pre>{`// PHP - SEGURO
 $username = $_GET['user'];
 // Usar XPath variables

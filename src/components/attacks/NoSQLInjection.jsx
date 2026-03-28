@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import AttackModule from '../AttackModule'
 import SimpleLogin from '../SimpleLogin'
+import { BarChart3, AlertTriangle, CheckCircle, TestTube2, BookOpen, Monitor, X } from 'lucide-react'
 import '../attacks.css'
 
 function NoSQLInjection({ onLoginSuccess }) {
@@ -16,8 +17,8 @@ function NoSQLInjection({ onLoginSuccess }) {
     setResult({
       vulnerable: isVulnerable,
       message: isVulnerable 
-        ? '⚠️ Patrón de inyección NoSQL detectado!'
-        : '✅ Entrada segura'
+        ? 'Patrón de inyección NoSQL detectado!'
+        : 'Entrada segura'
     })
   }
 
@@ -53,7 +54,7 @@ function NoSQLInjection({ onLoginSuccess }) {
   return (
     <AttackModule
       title="NoSQL Injection"
-      icon="📊"
+      icon={<BarChart3 size={24} />}
       description="NoSQL Injection es una vulnerabilidad en aplicaciones que usan bases de datos NoSQL como MongoDB, permitiendo inyectar operadores maliciosos."
     >
       <SimpleLogin attackType="NoSQL" onLoginSuccess={onLoginSuccess} />
@@ -85,7 +86,7 @@ function NoSQLInjection({ onLoginSuccess }) {
 
         <div className="testing-section">
           <div className="test-lab">
-            <h3>🧪 Laboratorio de Pruebas</h3>
+            <h3><TestTube2 size={20} style={{display: 'inline', marginRight: '8px'}} />Laboratorio de Pruebas</h3>
             <div className="input-group">
               <label>Ingresa un payload NoSQL:</label>
               <textarea
@@ -129,7 +130,7 @@ function NoSQLInjection({ onLoginSuccess }) {
       </div>
 
       <div className="examples-section">
-        <h3>📚 Ejemplos Educativos</h3>
+        <h3><BookOpen size={20} style={{display: 'inline', marginRight: '8px'}} />Ejemplos Educativos</h3>
         <div className="examples-grid">
           {examples.map((example, idx) => (
             <div key={idx} className="example-card">
@@ -142,10 +143,10 @@ function NoSQLInjection({ onLoginSuccess }) {
       </div>
 
       <div className="code-examples">
-        <h3>💻 Código Vulnerable vs Seguro</h3>
+        <h3><Monitor size={20} style={{display: 'inline', marginRight: '8px'}} />Código Vulnerable vs Seguro</h3>
         <div className="code-comparison">
           <div className="code-block vulnerable">
-            <h5>❌ VULNERABLE</h5>
+            <h5><X size={16} style={{display: 'inline', marginRight: '4px'}} />VULNERABLE</h5>
             <pre>{`// MongoDB - VULNERABLE
 const user = req.body.username;
 db.collection('users')
@@ -155,7 +156,7 @@ db.collection('users')
 // Query: {username: {$ne: null}}`}</pre>
           </div>
           <div className="code-block secure">
-            <h5>✅ SEGURO</h5>
+            <h5><CheckCircle size={16} style={{display: 'inline', marginRight: '4px'}} />SEGURO</h5>
             <pre>{`// MongoDB - SEGURO
 const user = String(req.body.username);
 db.collection('users')

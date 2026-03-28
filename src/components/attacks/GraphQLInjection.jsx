@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import AttackModule from '../AttackModule'
 import SimpleLogin from '../SimpleLogin'
+import { Rocket, AlertTriangle, CheckCircle, TestTube2, BookOpen, Monitor, X } from 'lucide-react'
 import '../attacks.css'
 
 function GraphQLInjection({ onLoginSuccess }) {
@@ -16,8 +17,8 @@ function GraphQLInjection({ onLoginSuccess }) {
     setResult({
       vulnerable: isVulnerable,
       message: isVulnerable 
-        ? '⚠️ Patrón de inyección GraphQL detectado!'
-        : '✅ Entrada segura'
+        ? 'Patrón de inyección GraphQL detectado!'
+        : 'Entrada segura'
     })
   }
 
@@ -53,7 +54,7 @@ function GraphQLInjection({ onLoginSuccess }) {
   return (
     <AttackModule
       title="GraphQL Injection"
-      icon="🚀"
+      icon={<Rocket size={24} />}
       description="GraphQL Injection permite a atacantes manipular consultas GraphQL para acceder a datos no autorizados o realizar operaciones maliciosas."
     >
       <SimpleLogin attackType="GraphQL" onLoginSuccess={onLoginSuccess} />
@@ -87,7 +88,7 @@ function GraphQLInjection({ onLoginSuccess }) {
 
         <div className="testing-section">
           <div className="test-lab">
-            <h3>🧪 Laboratorio de Pruebas</h3>
+            <h3><TestTube2 size={20} style={{display: 'inline', marginRight: '8px'}} />Laboratorio de Pruebas</h3>
             <div className="input-group">
               <label>Ingresa una query GraphQL:</label>
               <textarea
@@ -131,7 +132,7 @@ function GraphQLInjection({ onLoginSuccess }) {
       </div>
 
       <div className="examples-section">
-        <h3>📚 Ejemplos Educativos</h3>
+        <h3><BookOpen size={20} style={{display: 'inline', marginRight: '8px'}} />Ejemplos Educativos</h3>
         <div className="examples-grid">
           {examples.map((example, idx) => (
             <div key={idx} className="example-card">
@@ -144,10 +145,10 @@ function GraphQLInjection({ onLoginSuccess }) {
       </div>
 
       <div className="code-examples">
-        <h3>💻 Código Vulnerable vs Seguro</h3>
+        <h3><Monitor size={20} style={{display: 'inline', marginRight: '8px'}} />Código Vulnerable vs Seguro</h3>
         <div className="code-comparison">
           <div className="code-block vulnerable">
-            <h5>❌ VULNERABLE</h5>
+            <h5><X size={16} style={{display: 'inline', marginRight: '4px'}} />VULNERABLE</h5>
             <pre>{`// Node.js - VULNERABLE
 const query = \`
   query {
@@ -159,7 +160,7 @@ const query = \`
 const result = graphql(schema, query);`}</pre>
           </div>
           <div className="code-block secure">
-            <h5>✅ SEGURO</h5>
+            <h5><CheckCircle size={16} style={{display: 'inline', marginRight: '4px'}} />SEGURO</h5>
             <pre>{`// Node.js - SEGURO
 const allowedFields = ['id', 'name'];
 const safeFields = fields
